@@ -37,7 +37,7 @@
       </form>
       <div class="col-6 d-flex justify-content-end">
         <a
-          href="/users/addteacher"
+          href="/teachers/addteacher"
           type="button"
           class="btn btn-primary align-self-center"
         >+ Add Teacher</a>
@@ -72,24 +72,24 @@
 
     {{#each rows}}
       <tr>
-        <th scope="row">{{this.id}}</th>
-        <td>{{this.first_name}}</td>
-        <td>{{this.middle_name}}</td>
-        <td>{{this.last_name}}</td>
+        <th scope="row">{{this.teacherID}}</th>
+        <td>{{this.teacherFirstName}}</td>
+        <td>{{this.teacherMiddleName}}</td>
+        <td>{{this.teacherLastname}}</td>
         <td class="text-end">
           <a
-            href="/users/viewteacher/{{this.id}}"
+            href="/teachers/viewteacher/{{this.teacherID}}"
             type="button"
             class="btn btn-light btn-small"
           ><i class="bi bi-eye"></i> View</a>
           <a
-            href="/users/editteacher/{{this.id}}"
+            href="/teachers/editteacher/{{this.teacherID}}"
             type="button"
             class="btn btn-light btn-small"
           ><i class="bi bi-pencil"></i>
             Edit</a>
           <a
-            href="/users/deleteteacher/{{this.id}}"
+            href="/teachers/deleteteacher/{{this.teacherID}}"
             type="button"
             class="btn btn-light btn-small"
           ><i class="bi bi-person-x"></i> Delete</a>

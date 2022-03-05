@@ -1,11 +1,11 @@
-<div class="col-6">
+<div class="col-12">
   <div class="form-floating mb-3">
     <input
       type="text"
-      readonly
+      disabled
       class="form-control"
       id="floatingInput"
-      value="{{this.first_name}}"
+      value="{{this.teacherFirstName}}"
       placeholder="First Name"
       name="first_name"
     />
@@ -13,14 +13,14 @@
   </div>
 </div>
 
-<div class="col-6">
+<div class="col-12">
   <div class="form-floating mb-3">
     <input
       type="text"
-      readonly
+      disabled
       class="form-control"
       id="floatingInput"
-      value="{{this.middle_name}}"
+      value="{{this.teacherMiddleName}}"
       placeholder="Middle Name"
       name="middle_name"
     />
@@ -28,17 +28,21 @@
   </div>
 </div>
 
-<div class="col-6">
+<div class="col-12">
   <div class="form-floating mb-3">
     <input
       type="text"
-      readonly
+      disabled
       class="form-control"
       id="floatingInput"
-      value="{{this.last_name}}"
+      value="{{this.teacherLastname}}"
       placeholder="Last Name"
       name="last_name"
     />
     <label for="floatingInput">Last Name</label>
   </div>
+</div>
+
+<div class="col-12 d-grid">
+  <button class="btn btn-primary" type="submit">Delete Teacher</button>
 </div>

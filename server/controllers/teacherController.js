@@ -11,7 +11,7 @@ let connection = mysql.createConnection({
 const tableName = "Teachers";
 const tableId = "teacherID";
 
-// Show Users
+// Show Teachers
 exports.show = (req, res) => {
   // User the connection
   connection.query(`SELECT * FROM ${tableName}`, (err, rows) => {
@@ -50,7 +50,7 @@ exports.form = (req, res) => {
 
 // Add new user
 exports.create = (req, res) => {
-  const { first_name, last_name } = req.body;
+  const { first_name, middle_name, last_name } = req.body;
   let searchTerm = req.body.search;
 
   // User the connection
@@ -172,7 +172,7 @@ exports.deleteteacher = (req, res) => {
   );
 };
 
-// View Users
+// View Teachers
 exports.viewall = (req, res) => {
   // User the connection
   connection.query(

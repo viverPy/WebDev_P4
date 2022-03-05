@@ -1,41 +1,47 @@
-<div class="col-6">
+<div class="col-12">
   <div class="form-floating mb-3">
     <input
       type="text"
       class="form-control"
       id="floatingInput"
-      value="{{this.first_name}}"
+      value="{{this.teacherFirstName}}"
       placeholder="First Name"
       name="first_name"
+      required
     />
     <label for="floatingInput">First Name</label>
   </div>
 </div>
 
-<div class="col-6">
+<div class="col-12">
   <div class="form-floating mb-3">
     <input
       type="text"
       class="form-control"
       id="floatingInput"
-      value="{{this.middle_name}}"
+      value="{{this.teacherMiddleName}}"
       placeholder="Middle Name"
       name="middle_name"
+      required
     />
     <label for="floatingInput">Middle Name</label>
   </div>
 </div>
 
-<div class="col-6">
+<div class="col-12">
   <div class="form-floating mb-3">
     <input
       type="text"
       class="form-control"
       id="floatingInput"
-      value="{{this.last_name}}"
+      value="{{this.teacherLastname}}"
       placeholder="Last Name"
       name="last_name"
+      required
     />
     <label for="floatingInput">Last Name</label>
   </div>
+</div>
+<div class="col-12 d-grid">
+  <button class="btn btn-primary" type="submit">Submit</button>
 </div>
