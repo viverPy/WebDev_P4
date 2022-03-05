@@ -2,16 +2,16 @@ const mysql = require("mysql");
 
 // Connection Pool
 let connection = mysql.createConnection({
-  host: "localhost", //process.env.DB_HOST,
-  user: "root", //process.env.DB_USER,
-  password: "Langgalangga1", //process.env.DB_PASS,
-  database: "school_users", //process.env.DB_NAME
+  host: "localhost",
+  user: "", // EDIT THIS ACCORDING TO YOUR MYSQL ACCOUNT
+  password: "", // EDIT THIS ACCORDING TO YOUR MYSQL ACCOUNT
+  database: "school_users",
 });
 
 const tableName = "Students";
 const tableId = "studentID";
 
-// Show Teachers
+// Show Students
 exports.show = (req, res) => {
   // User the connection
   connection.query(`SELECT * FROM ${tableName}`, (err, rows) => {
@@ -172,7 +172,7 @@ exports.deletestudent = (req, res) => {
   );
 };
 
-// View Teachers
+// View Students
 exports.viewall = (req, res) => {
   // User the connection
   connection.query(

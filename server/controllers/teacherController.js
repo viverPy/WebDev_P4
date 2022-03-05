@@ -2,10 +2,10 @@ const mysql = require("mysql");
 
 // Connection Pool
 let connection = mysql.createConnection({
-  host: "localhost", //process.env.DB_HOST,
-  user: "root", //process.env.DB_USER,
-  password: "Langgalangga1", //process.env.DB_PASS,
-  database: "school_users", //process.env.DB_NAME
+  host: "localhost",
+  user: "", // EDIT THIS ACCORDING TO YOUR MYSQL ACCOUNT
+  password: "", // EDIT THIS ACCORDING TO YOUR MYSQL ACCOUNT
+  database: "school_users",
 });
 
 const tableName = "Teachers";
