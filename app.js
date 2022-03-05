@@ -36,8 +36,12 @@ app.set("view engine", "hbs");
 //   database: process.env.DB_NAME
 // });
 
-const userroutes = require("./server/routes/teacher");
-app.use("/teachers", userroutes);
+const teacherroutes = require("./server/routes/teacher");
+const subjectroutes = require("./server/routes/subject");
+const studentroutes = require("./server/routes/student");
+app.use("/teachers", teacherroutes);
+app.use("/subjects", subjectroutes);
+app.use("/students", studentroutes);
 //app.use('/',routes);
 app.get("/", function (req, res) {
   res.render("home");

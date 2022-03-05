@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/teachers">Teacher Management System</a>
+    <a class="navbar-brand" href="/Students">Student Management System</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -22,7 +22,7 @@
       <form
         class="d-flex searchform"
         method="POST"
-        action="/teachers"
+        action="/students"
         novalidate
       >
         <input
@@ -37,10 +37,10 @@
       </form>
       <div class="col-6 d-flex justify-content-end">
         <a
-          href="/teachers/addteacher"
+          href="/students/addstudent"
           type="button"
           class="btn btn-primary align-self-center"
-        >+ Add Teacher</a>
+        >+ Add Student</a>
       </div>
     </div>
   </div>
@@ -48,7 +48,7 @@
 
 {{#if removedUser}}
   <div class="alert alert-success alert-dismissible fade show" role="alert">
-    Teacher has been removed.
+    Student has been removed.
     <button
       type="button"
       class="btn-close"
@@ -72,24 +72,24 @@
 
     {{#each rows}}
       <tr>
-        <th scope="row">{{this.teacherID}}</th>
-        <td>{{this.teacherFirstName}}</td>
-        <td>{{this.teacherMiddleName}}</td>
-        <td>{{this.teacherLastname}}</td>
+        <th scope="row">{{this.studentID}}</th>
+        <td>{{this.StudentFirstName}}</td>
+        <td>{{this.studentMiddleName}}</td>
+        <td>{{this.studentLastname}}</td>
         <td class="text-end">
           <a
-            href="/teachers/viewteacher/{{this.teacherID}}"
+            href="/students/viewstudent/{{this.studentID}}"
             type="button"
             class="btn btn-light btn-small"
           ><i class="bi bi-eye"></i> View</a>
           <a
-            href="/teachers/editteacher/{{this.teacherID}}"
+            href="/students/editstudent/{{this.studentID}}"
             type="button"
             class="btn btn-light btn-small"
           ><i class="bi bi-pencil"></i>
             Edit</a>
           <a
-            href="/teachers/deleteteacher/{{this.teacherID}}"
+            href="/students/deletestudent/{{this.studentID}}"
             type="button"
             class="btn btn-light btn-small"
           ><i class="bi bi-person-x"></i> Delete</a>

@@ -10,7 +10,6 @@ router.post("/addteacher", teacherController.create);
 router.get("/editteacher/:id", teacherController.edit);
 router.post("/editteacher/:id", teacherController.update);
 router.get("/viewteacher/:id", teacherController.viewall);
-
 router.get("/deleteteacher/:id", teacherController.delete);
 router.post("/deleteteacher/:id", teacherController.deleteteacher);
 

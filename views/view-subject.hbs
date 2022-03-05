@@ -1,0 +1,36 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/Subjects">Subjects Management System</a></li>
+    <li class="breadcrumb-item active" aria-current="page">View Subject</li>
+  </ol>
+</nav>
+
+<div class="view-user p-5">
+  {{#each rows}}
+    <div class="row mb-5">
+      <div class="col text-center">
+        <h3>{{this.subjectNo}} {{this.subjectTitle}}</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Transcript Load</th>
+              <th scope="col">Paying Load</th>
+              <th scope="col">Teaching Load</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{this.transcriptLoad}}</td>
+              <td>{{this.payingLoad}}</td>
+              <td>{{this.teachingLoad}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  {{/each}}
+</div>

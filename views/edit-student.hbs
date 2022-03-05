@@ -1,7 +1,7 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/Teachers">Teachers Management</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Edit Teacher</li>
+    <li class="breadcrumb-item"><a href="/Students">Student Management System</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Edit Student</li>
   </ol>
 </nav>
 
@@ -13,7 +13,7 @@
 {{/if}}
 
 {{#each rows}}
-<form class="row g-3 needs-validation" method="POST" action="/teachers/editteacher/{{this.teacherID}}"> 
-  {{> teacher-form}}
+<form class="row g-3 needs-validation" method="POST" action="/students/editstudent/{{this.studentID}}"> 
+  {{> student-form}}
 </form>
 {{/each}}

@@ -1,7 +1,7 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/Teachers">Teachers Management</a></li>
-    <li class="breadcrumb-item active" aria-current="page">View Teacher</li>
+    <li class="breadcrumb-item"><a href="/Students">Students Management System</a></li>
+    <li class="breadcrumb-item active" aria-current="page">View Student</li>
   </ol>
 </nav>
 
@@ -9,7 +9,7 @@
   {{#each rows}}
     <div class="row mb-5">
       <div class="col text-center">
-        <h3>{{this.teacherFirstName}} {{this.teacherLastname}}</h3>
+        <h3>{{this.StudentFirstName}} {{this.studentLastname}}</h3>
       </div>
     </div>
     <div class="row">
@@ -25,10 +25,10 @@
           </thead>
           <tbody>
             <tr>
-              <th scope="row">{{this.teacherID}}</th>
-              <td>{{this.teacherFirstName}}</td>
-              <td>{{this.teacherMiddleName}}</td>
-              <td>{{this.teacherLastname}}</td>
+              <th scope="row">{{this.studentID}}</th>
+              <td>{{this.StudentFirstName}}</td>
+              <td>{{this.studentMiddleName}}</td>
+              <td>{{this.studentLastname}}</td>
             </tr>
           </tbody>
         </table>

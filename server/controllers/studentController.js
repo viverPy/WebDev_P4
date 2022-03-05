@@ -8,8 +8,8 @@ let connection = mysql.createConnection({
   database: "school_users", //process.env.DB_NAME
 });
 
-const tableName = "Teachers";
-const tableId = "teacherID";
+const tableName = "Students";
+const tableId = "studentID";
 
 // Show Teachers
 exports.show = (req, res) => {
@@ -18,7 +18,7 @@ exports.show = (req, res) => {
     // When done with the connection, release it
     if (!err) {
       let removedUser = req.query.removed;
-      res.render("show-teachers", { rows, removedUser });
+      res.render("show-students", { rows, removedUser });
     } else {
       console.log(err);
     }
@@ -31,11 +31,11 @@ exports.find = (req, res) => {
   let searchTerm = req.body.search;
   // User the connection
   connection.query(
-    `SELECT * FROM ${tableName} WHERE teacherFirstName  LIKE ? OR teacherLastname  LIKE ?`,
+    `SELECT * FROM ${tableName} WHERE StudentFirstName  LIKE ? OR studentLastname  LIKE ?`,
     ["%" + searchTerm + "%", "%" + searchTerm + "%"],
     (err, rows) => {
       if (!err) {
-        res.render("show-teachers", { rows });
+        res.render("show-students", { rows });
       } else {
         console.log(err);
       }
@@ -45,7 +45,7 @@ exports.find = (req, res) => {
 };
 
 exports.form = (req, res) => {
-  res.render("add-teacher");
+  res.render("add-student");
 };
 
 // Add new user
@@ -55,11 +55,11 @@ exports.create = (req, res) => {
 
   // User the connection
   connection.query(
-    `INSERT INTO ${tableName} SET teacherFirstName   = ?, teacherMiddleName  = ?, teacherLastname  = ?`,
+    `INSERT INTO ${tableName} SET StudentFirstName   = ?, studentMiddleName  = ?, studentLastname  = ?`,
     [first_name, middle_name, last_name],
     (err, rows) => {
       if (!err) {
-        res.render("add-teacher", { alert: "Teacher added successfully." });
+        res.render("add-student", { alert: "Student added successfully." });
       } else {
         console.log(err);
       }
@@ -76,7 +76,7 @@ exports.edit = (req, res) => {
     [req.params.id],
     (err, rows) => {
       if (!err) {
-        res.render("edit-teacher", { rows });
+        res.render("edit-student", { rows });
       } else {
         console.log(err);
       }
@@ -90,7 +90,7 @@ exports.update = (req, res) => {
   const { first_name, middle_name, last_name } = req.body;
   // User the connection
   connection.query(
-    `UPDATE ${tableName} SET teacherFirstName   = ?, teacherMiddleName  = ?, teacherLastname  = ? WHERE ${tableId} = ?`,
+    `UPDATE ${tableName} SET StudentFirstName   = ?, studentMiddleName  = ?, studentLastname  = ? WHERE ${tableId} = ?`,
     [first_name, middle_name, last_name, req.params.id],
     (err, rows) => {
       if (!err) {
@@ -102,7 +102,7 @@ exports.update = (req, res) => {
             // When done with the connection, release it
 
             if (!err) {
-              res.render("edit-teacher", {
+              res.render("edit-student", {
                 rows,
                 alert: `${first_name} has been updated.`,
               });
@@ -128,7 +128,7 @@ exports.delete = (req, res) => {
     [req.params.id],
     (err, rows) => {
       if (!err) {
-        res.render("delete-teacher", { rows });
+        res.render("delete-student", { rows });
       } else {
         console.log(err);
       }
@@ -138,7 +138,7 @@ exports.delete = (req, res) => {
 };
 
 // Delete User - Post
-exports.deleteteacher = (req, res) => {
+exports.deletestudent = (req, res) => {
   const { first_name, middle_name, last_name } = req.body;
   // User the connection
   connection.query(
@@ -154,9 +154,9 @@ exports.deleteteacher = (req, res) => {
             // When done with the connection, release it
 
             if (!err) {
-              res.render("delete-teacher", {
+              res.render("delete-student", {
                 rows,
-                alert: `Teacher has been deleted.`,
+                alert: `Student has been deleted.`,
               });
             } else {
               console.log(err);
@@ -180,7 +180,7 @@ exports.viewall = (req, res) => {
     [req.params.id],
     (err, rows) => {
       if (!err) {
-        res.render("view-teacher", { rows });
+        res.render("view-student", { rows });
       } else {
         console.log(err);
       }
