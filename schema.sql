@@ -1,4 +1,5 @@
-CREATE DATABASE IF NOT EXISTS school_users;
+DROP DATABASE IF EXISTS school_users;
+CREATE DATABASE school_users;
 
 USE school_users;
 
