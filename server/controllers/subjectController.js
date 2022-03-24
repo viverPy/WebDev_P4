@@ -3,8 +3,8 @@ const mysql = require("mysql");
 // Connection Pool
 let connection = mysql.createConnection({
   host: "localhost",
-  user: "", // EDIT THIS ACCORDING TO YOUR MYSQL ACCOUNT
-  password: "", // EDIT THIS ACCORDING TO YOUR MYSQL ACCOUNT
+  user: "root", // EDIT THIS ACCORDING TO YOUR MYSQL ACCOUNT
+  password: "Langgalangga1", // EDIT THIS ACCORDING TO YOUR MYSQL ACCOUNT
   database: "school_users",
 });
 
