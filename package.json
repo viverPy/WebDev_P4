@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "blooming-menu": "^1.1.1",
     "body-parser": "^1.19.2",
     "dotenv": "^8.6.0",
     "express": "^4.17.3",

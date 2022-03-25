@@ -1,50 +1,22 @@
-<div class="col-12">
-  <div class="form-floating mb-3">
-    <input
-      type="text"
-      disabled
-      class="form-control"
-      id="floatingInput"
-      value="{{this.StudentFirstName}}"
-      placeholder="First Name"
-      name="first_name"
-      required
-    />
-    <label for="floatingInput">First Name</label>
+  <div class="col-6">
+    <div class="form-floating mb-3">
+      <input type="text" readonly class="form-control" id="floatingInput" value="{{this.StudentFirstName}}" placeholder="First Name" name="first_name">
+      <label for="floatingInput">First Name</label>
+    </div>
   </div>
-</div>
+  <div class="col-6">
+    <div class="form-floating mb-3">
+      <input type="text" readonly class="form-control" id="floatingInput" value="{{this.studentLastname}}" placeholder="Last Name" name="last_name">
+      <label for="floatingInput">Last Name</label>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="form-floating mb-3">
+      <input type="text" readonly class="form-control" id="floatingInput" value="{{this.studentMiddleName}}" placeholder="Middle Name" name="middle_name">
+      <label for="floatingInput">Middle Name</label>
+    </div>
+  </div>
 
-<div class="col-12">
-  <div class="form-floating mb-3">
-    <input
-      type="text"
-      disabled
-      class="form-control"
-      id="floatingInput"
-      value="{{this.studentMiddleName}}"
-      placeholder="Middle Name"
-      name="middle_name"
-      required
-    />
-    <label for="floatingInput">Middle Name</label>
+  <div class="col-12 d-grid">
+    <button onclick="deleterecord('/students/deleterecord/',{{this.studentID}},'Delete Student')" class="btn btn-danger" >Delete Student</button>
   </div>
-</div>
-
-<div class="col-12">
-  <div class="form-floating mb-3">
-    <input
-      type="text"
-      disabled
-      class="form-control"
-      id="floatingInput"
-      value="{{this.studentLastname}}"
-      placeholder="Last Name"
-      name="last_name"
-      required
-    />
-    <label for="floatingInput">Last Name</label>
-  </div>
-</div>
-<div class="col-12 d-grid">
-  <button class="btn btn-primary" type="submit">Submit</button>
-</div>

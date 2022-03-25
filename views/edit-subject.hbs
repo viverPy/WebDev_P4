@@ -1,7 +1,6 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/Subjects">Subjects Management System</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Edit Subject</li>
+    <li class="breadcrumb-item"><a href="/Subjects">Subject Management</a></li>
   </ol>
 </nav>
 
@@ -13,7 +12,7 @@
 {{/if}}
 
 {{#each rows}}
-<form class="row g-3 needs-validation" method="POST" action="/subjects/editsubject/{{this.subjectID}}"> 
-  {{> subject-form}}
+<form id="editrecordform"  class="row g-3 needs-validation" novalidate> 
+  {{> subject-editform}}
 </form>
 {{/each}}

@@ -1,7 +1,7 @@
   <div class="col-6">
      <div id="iddiv" class="d-none d-print-none form-floating mb-3">
-      <input type="text" class="form-control" id="studentid" value="{{this.studentID}}" placeholder="Student ID" name="student_id">
-      <label for="floatingInput">User ID</label>
+      <input type="text" readonly class="form-control" id="studentid" value="{{this.studentID}}" placeholder="Student ID" name="student_id">
+      <label for="floatingInput">Student ID</label>
     </div>
     <div class="form-floating mb-3">
       <input type="text" class="form-control" id="floatingInput" value="{{this.StudentFirstName}}" placeholder="First Name" name="first_name">
@@ -14,13 +14,12 @@
       <label for="floatingInput">Last Name</label>
     </div>
   </div>
-    <div class="col-6">
+  <div class="col-6">
     <div class="form-floating mb-3">
       <input type="text" class="form-control" id="floatingInput" value="{{this.studentMiddleName}}" placeholder="Middle Name" name="middle_name">
       <label for="floatingInput">Middle Name</label>
     </div>
   </div>
- 
   <div class="col-12 d-grid">
-    <button class="btn btn-primary" type="submit">Submit</button>
+    <button class="btn btn-primary" type="submit">Save</button>
   </div>

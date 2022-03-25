@@ -1,190 +1,131 @@
-const mysql = require("mysql");
+const mysql = require('mysql');
+var url = require('url');
 
 // Connection Pool
 let connection = mysql.createConnection({
-  host: "localhost",
-  user: "root", // EDIT THIS ACCORDING TO YOUR MYSQL ACCOUNT
-  password: "Langgalangga1", // EDIT THIS ACCORDING TO YOUR MYSQL ACCOUNT
-  database: "school_users",
+  host: 'localhost', //process.env.DB_HOST,
+  user: 'root', //process.env.DB_USER,
+  password: 'Langgalangga1', //process.env.DB_PASS,
+  database: 'school_users' //process.env.DB_NAME
 });
 
-const tableName = "Students";
-const tableId = "studentID";
-
-// Show Students
-exports.show = (req, res) => {
-  // User the connection
-  connection.query(`SELECT * FROM ${tableName}`, (err, rows) => {
-    // When done with the connection, release it
+exports.showrecords = (req, res) => {
+  connection.query('SELECT * FROM Students', (err, rows) => {
     if (!err) {
       let removedUser = req.query.removed;
-      res.render("show-students", { rows, removedUser });
+      res.render('show-students', { rows, removedUser, jscript:'studentclient.js' });
     } else {
       console.log(err);
     }
-    console.log(`The data from ${tableName} table: \n`, rows);
+   console.log('The data from user table: \n', rows);
   });
-};
-
-// Find User by Search
+}
 exports.find = (req, res) => {
   let searchTerm = req.body.search;
-  // User the connection
-  connection.query(
-    `SELECT * FROM ${tableName} WHERE StudentFirstName  LIKE ? OR studentLastname  LIKE ?`,
-    ["%" + searchTerm + "%", "%" + searchTerm + "%"],
-    (err, rows) => {
-      if (!err) {
-        res.render("show-students", { rows });
-      } else {
-        console.log(err);
-      }
-      console.log(`The data from ${tableName} table: \n`, rows);
+  connection.query('SELECT * FROM Students WHERE studentFirstName LIKE ? OR studentLastname LIKE ?', ['%' + searchTerm + '%', '%' + searchTerm + '%'], (err, rows) => {
+    if (!err) 
+    {
+     res.render('show-students', { rows, jscript:'studentclient.js' });
+   } else 
+   {
+      console.log(err);
     }
-  );
-};
+   console.log('The data from user table: \n', rows);
+  });
+}
 
 exports.form = (req, res) => {
-  res.render("add-student");
-};
+  res.render('add-Student');
+}
 
-// Add new user
 exports.create = (req, res) => {
-  const { first_name, middle_name, last_name } = req.body;
+  const { first_name, last_name, middle_name } = req.body;
   let searchTerm = req.body.search;
 
-  // User the connection
-  connection.query(
-    `INSERT INTO ${tableName} SET StudentFirstName   = ?, studentMiddleName  = ?, studentLastname  = ?`,
-    [first_name, middle_name, last_name],
-    (err, rows) => {
-      if (!err) {
-        res.render("add-student", { alert: "Student added successfully." });
-      } else {
-        console.log(err);
-      }
-      console.log(`The data from ${tableName} table: \n`, rows);
+  console.log(first_name, last_name, middle_name);
+
+  connection.query('INSERT INTO Students SET studentFirstName = ?, studentLastname = ?, studentMiddleName = ?', [first_name, last_name, middle_name], (err, rows) => {
+    if (!err) {
+      res.render('add-student', { alert: 'Student added successfully.', jscript:'studentclient.js'});
+    } else {
+      console.log(err);
     }
-  );
-};
+   console.log('The data from user table: \n', rows);
+  });
+}
 
-// Edit user
-exports.edit = (req, res) => {
+
+exports.showrecordtoedit = (req, res) => {
+  var studentId = req.query.id;
   // User the connection
-  connection.query(
-    `SELECT * FROM ${tableName} WHERE ${tableId} = ?`,
-    [req.params.id],
-    (err, rows) => {
-      if (!err) {
-        res.render("edit-student", { rows });
-      } else {
-        console.log(err);
-      }
-      console.log(`The data from ${tableName} table: \n`, rows);
+  connection.query('SELECT * FROM Students WHERE studentID = ?',[studentId], (err, rows) => {
+    if (!err) {
+      res.render('edit-student', { rows, jscript:'studentclient.js' });
+    } else {
+      console.log(err);
     }
-  );
-};
+    console.log('The data from user table: \n', rows);
+  });
+}
 
-// Update User
-exports.update = (req, res) => {
-  const { first_name, middle_name, last_name } = req.body;
-  // User the connection
-  connection.query(
-    `UPDATE ${tableName} SET StudentFirstName   = ?, studentMiddleName  = ?, studentLastname  = ? WHERE ${tableId} = ?`,
-    [first_name, middle_name, last_name, req.params.id],
-    (err, rows) => {
-      if (!err) {
-        // User the connection
-        connection.query(
-          `SELECT * FROM ${tableName} WHERE ${tableId} = ?`,
-          [req.params.id],
-          (err, rows) => {
-            // When done with the connection, release it
+exports.updaterecord = (req, res) => {
+  var studentId = req.query.id;
+  var fname = req.query.first_name;
+  var lname = req.query.last_name;
+  var mname = req.query.middle_name;
 
-            if (!err) {
-              res.render("edit-student", {
-                rows,
-                alert: `${first_name} has been updated.`,
-              });
-            } else {
-              console.log(err);
-            }
-            console.log(`The data from ${tableName} table: \n`, rows);
-          }
-        );
-      } else {
-        console.log(err);
-      }
-      console.log(`The data from ${tableName} table: \n`, rows);
+
+  console.log(studentId, fname, lname, mname);
+  connection.query('UPDATE Students SET studentFirstName = ?, studentLastname = ?, studentMiddleName = ? WHERE studentID = ?', [fname, lname, mname, studentId], (err, rows) => {
+
+
+  
+  });
+}
+
+exports.showrecordtodelete = (req, res) => {
+  var studentId = req.query.id;
+  connection.query('SELECT * FROM Students WHERE studentID = ?', [studentId], (err, rows) => {
+    if (!err) {
+      res.render('delete-student', { rows, jscript:'studentclient.js' });
+    } else {
+      console.log(err);
     }
-  );
-};
+   console.log('The data from user table: \n', rows);
+  });
+}
 
-// Delete User - GET
-exports.delete = (req, res) => {
-  // User the connection
-  connection.query(
-    `SELECT * FROM ${tableName} WHERE ${tableId} = ?`,
-    [req.params.id],
-    (err, rows) => {
-      if (!err) {
-        res.render("delete-student", { rows });
-      } else {
-        console.log(err);
-      }
-      console.log(`The data from ${tableName} table: \n`, rows);
+
+exports.deleterecord = (req, res) => {
+  
+  var studentId = req.query.id;
+  connection.query('delete from Students WHERE studentID= ?', [studentId], (err, rows) => {
+
+    if (err) 
+        {
+          console.log(err);
+          
+        }
+    
+   
+  });
+  console.log('Deleted record');
+}
+
+exports.viewrecord = (req, res) => {
+
+  var studentId = req.query.id;
+
+  connection.query('SELECT * FROM Students WHERE studentID = ?',[studentId], (err, rows) => {  
+    if (!err) {
+     res.render('view-students', { rows, jscript:'studentclient.js' });
+      
+    } else {
+     console.log(err);
     }
-  );
-};
+   console.log('The data from student id: \n rows: \n ',studentId, rows);
 
-// Delete User - Post
-exports.deletestudent = (req, res) => {
-  const { first_name, middle_name, last_name } = req.body;
-  // User the connection
-  connection.query(
-    `DELETE FROM ${tableName} WHERE ${tableId} = ?`,
-    [req.params.id],
-    (err, rows) => {
-      if (!err) {
-        // User the connection
-        connection.query(
-          `SELECT * FROM ${tableName} WHERE ${tableId} = ?`,
-          [req.params.id],
-          (err, rows) => {
-            // When done with the connection, release it
+  });  
 
-            if (!err) {
-              res.render("delete-student", {
-                rows,
-                alert: `Student has been deleted.`,
-              });
-            } else {
-              console.log(err);
-            }
-            console.log(`The data from ${tableName} table: \n`, rows);
-          }
-        );
-      } else {
-        console.log(err);
-      }
-      console.log(`The data from ${tableName} table: \n`, rows);
-    }
-  );
-};
+}
 
-// View Students
-exports.viewall = (req, res) => {
-  // User the connection
-  connection.query(
-    `SELECT * FROM ${tableName} WHERE ${tableId} = ?`,
-    [req.params.id],
-    (err, rows) => {
-      if (!err) {
-        res.render("view-student", { rows });
-      } else {
-        console.log(err);
-      }
-      console.log(`The data from ${tableName} table: \n`, rows);
-    }
-  );
-};

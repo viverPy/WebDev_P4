@@ -1,16 +1,17 @@
-const express = require("express");
-const router = express.Router();
-const studentController = require("../controllers/studentController");
+const express = require('express');
+const studentRouter = express.Router();
+const studentController = require('../controllers/studentController');
 
 // Routes
-router.get("/", studentController.show);
-router.post("/", studentController.find);
-router.get("/addstudent", studentController.form);
-router.post("/addstudent", studentController.create);
-router.get("/editstudent/:id", studentController.edit);
-router.post("/editstudent/:id", studentController.update);
-router.get("/viewstudent/:id", studentController.viewall);
-router.get("/deletestudent/:id", studentController.delete);
-router.post("/deletestudent/:id", studentController.deletestudent);
+studentRouter.get('/', studentController.showrecords);
+studentRouter.post('/', studentController.find);
+studentRouter.get('/addrecord', studentController.form);
+studentRouter.post('/addrecord', studentController.create);
+studentRouter.get('/showrecordtoedit',studentController.showrecordtoedit); // new version with ajax
+studentRouter.get('/updaterecord',studentController.updaterecord); // with ajax
+studentRouter.get('/viewrecord/',studentController.viewrecord); // with ajax
+studentRouter.get('/showrecordtodelete',studentController.showrecordtodelete); // with ajax
+studentRouter.get('/deleterecord', studentController.deleterecord); // with ajax
 
-module.exports = router;
+  
+module.exports = studentRouter;

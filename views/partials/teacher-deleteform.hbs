@@ -1,48 +1,22 @@
-<div class="col-12">
-  <div class="form-floating mb-3">
-    <input
-      type="text"
-      disabled
-      class="form-control"
-      id="floatingInput"
-      value="{{this.teacherFirstName}}"
-      placeholder="First Name"
-      name="first_name"
-    />
-    <label for="floatingInput">First Name</label>
+  <div class="col-6">
+    <div class="form-floating mb-3">
+      <input type="text" readonly class="form-control" id="floatingInput" value="{{this.teacherFirstName}}" placeholder="First Name" name="first_name">
+      <label for="floatingInput">First Name</label>
+    </div>
   </div>
-</div>
-
-<div class="col-12">
-  <div class="form-floating mb-3">
-    <input
-      type="text"
-      disabled
-      class="form-control"
-      id="floatingInput"
-      value="{{this.teacherMiddleName}}"
-      placeholder="Middle Name"
-      name="middle_name"
-    />
-    <label for="floatingInput">Middle Name</label>
+  <div class="col-6">
+    <div class="form-floating mb-3">
+      <input type="text" readonly class="form-control" id="floatingInput" value="{{this.teacherLastname}}" placeholder="Last Name" name="last_name">
+      <label for="floatingInput">Last Name</label>
+    </div>
   </div>
-</div>
-
-<div class="col-12">
-  <div class="form-floating mb-3">
-    <input
-      type="text"
-      disabled
-      class="form-control"
-      id="floatingInput"
-      value="{{this.teacherLastname}}"
-      placeholder="Last Name"
-      name="last_name"
-    />
-    <label for="floatingInput">Last Name</label>
+  <div class="col-6">
+    <div class="form-floating mb-3">
+      <input type="text" readonly class="form-control" id="floatingInput" value="{{this.teacherMiddleName}}" placeholder="Middle Name" name="middle_name">
+      <label for="floatingInput">Middle Name</label>
+    </div>
   </div>
-</div>
 
-<div class="col-12 d-grid">
-  <button class="btn btn-primary" type="submit">Delete Teacher</button>
-</div>
+  <div class="col-12 d-grid">
+    <button onclick="deleterecord('/teachers/deleterecord/',{{this.teacherID}},'Delete Teacher')" class="btn btn-danger" >Delete Teacher</button>
+  </div>

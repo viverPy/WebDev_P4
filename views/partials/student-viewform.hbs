@@ -1,12 +1,3 @@
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/Students">Students Management System</a></li>
-    <li class="breadcrumb-item active" aria-current="page">View Student</li>
-  </ol>
-</nav>
-
-<div class="view-user p-5">
-  {{#each rows}}
     <div class="row"><i class="fal fa-user-graduate view-photo"></i></div>
     <div class="row mb-5">
       <div class="col text-center">
@@ -35,5 +26,8 @@
         </table>
       </div>
     </div>
-  {{/each}}
-</div>
+ 
+  
+  <div class="col-12 d-grid">
+       <a href="/students" type="button" class="btn btn-primary align-self-center">Close</a>
+  </div>

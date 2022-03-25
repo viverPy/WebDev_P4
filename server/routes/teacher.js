@@ -1,16 +1,17 @@
-const express = require("express");
-const router = express.Router();
-const teacherController = require("../controllers/teacherController");
+const express = require('express');
+const teacherRouter = express.Router();
+const teacherController = require('../controllers/teacherController');
 
 // Routes
-router.get("/", teacherController.show);
-router.post("/", teacherController.find);
-router.get("/addteacher", teacherController.form);
-router.post("/addteacher", teacherController.create);
-router.get("/editteacher/:id", teacherController.edit);
-router.post("/editteacher/:id", teacherController.update);
-router.get("/viewteacher/:id", teacherController.viewall);
-router.get("/deleteteacher/:id", teacherController.delete);
-router.post("/deleteteacher/:id", teacherController.deleteteacher);
+teacherRouter.get('/', teacherController.showrecords);
+teacherRouter.post('/', teacherController.find);
+teacherRouter.get('/addrecord', teacherController.form);
+teacherRouter.post('/addrecord', teacherController.create);
+teacherRouter.get('/showrecordtoedit',teacherController.showrecordtoedit); // new version with ajax
+teacherRouter.get('/updaterecord',teacherController.updaterecord); // with ajax
+teacherRouter.get('/viewrecord/',teacherController.viewrecord); // with ajax
+teacherRouter.get('/showrecordtodelete',teacherController.showrecordtodelete); // with ajax
+teacherRouter.get('/deleterecord', teacherController.deleterecord); // with ajax
 
-module.exports = router;
+  
+module.exports = teacherRouter;

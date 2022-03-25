@@ -1,16 +1,17 @@
-const express = require("express");
-const router = express.Router();
-const subjectController = require("../controllers/subjectController");
+const express = require('express');
+const subjectRouter = express.Router();
+const subjectController = require('../controllers/subjectController');
 
 // Routes
-router.get("/", subjectController.show);
-router.post("/", subjectController.find);
-router.get("/addsubject", subjectController.form);
-router.post("/addsubject", subjectController.create);
-router.get("/editsubject/:id", subjectController.edit);
-router.post("/editsubject/:id", subjectController.update);
-router.get("/viewsubject/:id", subjectController.viewall);
-router.get("/deletesubject/:id", subjectController.delete);
-router.post("/deletesubject/:id", subjectController.deletesubject);
+subjectRouter.get('/', subjectController.showrecords);
+subjectRouter.post('/', subjectController.find);
+subjectRouter.get('/addrecord', subjectController.form);
+subjectRouter.post('/addrecord', subjectController.create);
+subjectRouter.get('/showrecordtoedit',subjectController.showrecordtoedit); // new version with ajax
+subjectRouter.get('/updaterecord',subjectController.updaterecord); // with ajax
+subjectRouter.get('/viewrecord/',subjectController.viewrecord); // with ajax
+subjectRouter.get('/showrecordtodelete',subjectController.showrecordtodelete); // with ajax
+subjectRouter.get('/deleterecord', subjectController.deleterecord); // with ajax
 
-module.exports = router;
+  
+module.exports = subjectRouter;
